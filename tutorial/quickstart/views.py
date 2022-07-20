@@ -5,10 +5,7 @@ from rest_framework import permissions
 
 from tutorial.quickstart.models import Book
 from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, BookSerializer
-from django.http import HttpResponse
 
-def hello(request):
-    return HttpResponse("Hello world")
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -28,6 +25,6 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book()
+    queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [permissions.IsAuthenticated]
